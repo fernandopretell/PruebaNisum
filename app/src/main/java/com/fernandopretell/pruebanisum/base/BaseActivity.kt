@@ -1,9 +1,12 @@
 package com.fernandopretell.pruebanisum.base
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.ViewGroup
 import androidx.annotation.StringRes
 import com.fernandopretell.pruebanisum.R
+import com.fernandopretell.pruebanisum.util.ConnectivityReceiver
 import com.fernandopretell.pruebanisum.util.LoadingView
 import com.fernandopretell.pruebanisum.util.removeFromParent
 import com.google.firebase.auth.FirebaseAuth
@@ -11,7 +14,8 @@ import com.google.firebase.firestore.FirebaseFirestore
 import dagger.android.support.DaggerAppCompatActivity
 
 
-abstract class BaseActivity: DaggerAppCompatActivity(){
+abstract class BaseActivity : DaggerAppCompatActivity(),
+    ConnectivityReceiver.ConnectivityReceiverListener {
 
     private var isReceiverRegistered = false
     private val loadingView by lazy { LoadingView(this) }
@@ -36,9 +40,12 @@ abstract class BaseActivity: DaggerAppCompatActivity(){
     fun showProgressDialog(message: String) {
         loadingView.setMessage(message)
         if (loadingView.parent == null) {
-            addContentView(loadingView, ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT))
+            addContentView(
+                loadingView, ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT,
+                    ViewGroup.LayoutParams.MATCH_PARENT
+                )
+            )
         }
     }
 
@@ -68,7 +75,6 @@ abstract class BaseActivity: DaggerAppCompatActivity(){
     }
 
 
-
     /**
      * Overrides the pending Activity transition by performing the "Enter" animation.
      */
@@ -81,6 +87,32 @@ abstract class BaseActivity: DaggerAppCompatActivity(){
      */
     protected fun overridePendingTransitionExit() {
         overridePendingTransition(R.animator.slide_from_left, R.animator.slide_to_right)
+    }
+
+    override fun onNetworkConnectionChanged(isConnected: Boolean) {
+        showNetworkMessage(isConnected)
+    }
+
+    protected fun unregisterNetworkChanges() {
+        try {
+            unregisterReceiver(ConnectivityReceiver())
+        } catch (e: IllegalArgumentException) {
+            e.printStackTrace()
+        }
+    }
+
+    public override fun onDestroy() {
+        super.onDestroy()
+        unregisterNetworkChanges()
+    }
+
+    abstract fun showNetworkMessage(isConnected: Boolean)
+
+    fun isNetworkVConnected(context: Context):Boolean{
+        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork = cm.activeNetworkInfo
+        return activeNetwork != null && activeNetwork.isConnected
+
     }
 
 }
