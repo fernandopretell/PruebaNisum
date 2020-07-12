@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_bar_hint">Buscar</string>
+
+    <string-array name="search_bar_items">
+        <item>Nueva 1d1</item>
+        <item>Nueva 2d2</item>
+        <item>Nueva 3d3</item>
+    </string-array>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <androidx.appcompat.widget.AppCompatAutoCompleteTextView
+        android:id="@+id/tvSearch"
+        style="@style/Theme.SearchBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:imeOptions="actionGo"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        android:minHeight="@dimen/search_bar_height"
+        android:textColor="@null"
+        android:textColorHint="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:hint="@string/search_bar_hint" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/search_bar_padding_icon_horizontal"
+        app:layout_constraintBottom_toBottomOf="@id/tvSearch"
+        app:layout_constraintEnd_toEndOf="@id/tvSearch"
+        app:layout_constraintTop_toTopOf="@id/tvSearch"
+        tools:srcCompat="@drawable/ic_search" />
+
+</merge>

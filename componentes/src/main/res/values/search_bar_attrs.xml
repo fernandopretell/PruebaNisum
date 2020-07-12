@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SearchBar">
+        <attr name="searchBar_backgroundDrawable" format="reference" />
+        <attr name="searchBar_iconSearch" format="reference" />
+        <attr name="searchBar_iconClose" format="reference" />
+        <attr name="searchBar_textAppearance" format="reference" />
+        <attr name="searchBar_hint" format="string" />
+        <attr name="searchBar_hintColor" format="color" />
+        <attr name="searchBar_textColor" format="color" />
+        <attr name="searchBar_items" format="reference" />
+        <attr name="searchBar_showIcon" format="boolean" />
+        <attr name="searchBar_fontFamily" format="reference" />
+    </declare-styleable>
+</resources>

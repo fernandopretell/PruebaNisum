@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Prueba Nisum</string>
+    <string name="copy_loading">Cargando..</string>
+    <string name="busca_tu_canci_n">Busca tu canción</string>
+</resources>

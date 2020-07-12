@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextAppearance.SearchBar" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:textColorHint">@color/gray_4</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="Theme.SearchBar" parent="Widget.AppCompat.AutoCompleteTextView">
+        <item name="android:background">@drawable/bg_search_bar</item>
+        <item name="android:textAppearance">@style/TextAppearance.SearchBar</item>
+    </style>
+
+</resources>

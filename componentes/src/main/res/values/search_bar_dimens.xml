@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="search_bar_radius">4dp</dimen>
+    <dimen name="search_bar_padding_vertical">8dp</dimen>
+    <dimen name="search_bar_padding_horizontal">12dp</dimen>
+    <dimen name="search_bar_padding_icon_horizontal">8dp</dimen>
+    <dimen name="search_bar_height">36dp</dimen>
+    <dimen name="search_bar_padding_end">36dp</dimen>
+    <dimen name="text_size_body">14sp</dimen>
+</resources>
