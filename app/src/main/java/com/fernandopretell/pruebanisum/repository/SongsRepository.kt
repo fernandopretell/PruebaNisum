@@ -12,14 +12,14 @@ import com.fernandopretell.pruebanisum.source.remote.WebServiceData
  **/
 class SearchSongRepository(private val api : WebServiceData) : BaseRepository() {
 
-    suspend fun getSongsItunes(text: String) : MutableList<ResponseItunesSong>?{
+    suspend fun getSongsItunes(text: String) : ResponseItunesSong?{
 
         val itunesResponse = safeApiCall(
             call = {api.getSongs(text).await()},
             errorMessage = "Error Fetching songs"
         )
 
-        return itunesResponse?.toMutableList()
+        return itunesResponse
 
     }
 

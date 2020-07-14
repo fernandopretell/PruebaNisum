@@ -1,8 +1,7 @@
 package com.fernandopretell.pruebanisum.source.local
 
-import androidx.annotation.NonNull
 import androidx.room.*
-import com.fernandopretell.pruebanisum.model.Pelicula
+import com.fernandopretell.pruebanisum.model.SongModel
 
 /**
  * Created by fernandopretell.
@@ -34,7 +33,7 @@ data class ResponseEntity(
 
     @TypeConverters(ResultConverter::class)
         @ColumnInfo(name = "results")
-        var results: List<Pelicula> = ArrayList(),
+        var results: List<SongModel> = ArrayList(),
 
     @ColumnInfo(name = "average_rating")
         var average_rating: Double,

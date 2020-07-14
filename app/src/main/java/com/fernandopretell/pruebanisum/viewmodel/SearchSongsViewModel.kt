@@ -25,12 +25,12 @@ class SearchSongsViewModel : ViewModel(){
 
     private val repository : SearchSongRepository = SearchSongRepository(HelperWs.getServiceData())
 
-    val popularMoviesLiveData = MutableLiveData<MutableList<ResponseItunesSong>>()
+    val popularSongsLiveData = MutableLiveData<ResponseItunesSong>()
 
     fun fetchSongs(text: String){
         scope.launch {
             val popularMovies = repository.getSongsItunes(text)
-            popularMoviesLiveData.postValue(popularMovies)
+            popularSongsLiveData.postValue(popularMovies)
         }
     }
 

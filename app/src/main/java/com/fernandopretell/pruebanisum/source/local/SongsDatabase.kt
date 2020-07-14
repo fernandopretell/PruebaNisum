@@ -9,19 +9,19 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(entities = arrayOf(ResponseEntity::class), version = 1)
 @TypeConverters(ResultConverter::class)
-abstract class PeliculasDatabase : RoomDatabase(){
+abstract class SongsDatabase : RoomDatabase(){
 
     abstract fun responseDao():ResponseDao
 
     companion object{
 
-        private var instance: PeliculasDatabase? = null
+        private var instance: SongsDatabase? = null
 
-        fun getInstance(context: Context):PeliculasDatabase?{
+        fun getInstance(context: Context):SongsDatabase?{
 
             if(instance == null){
-                instance = Room.databaseBuilder<PeliculasDatabase>(context.applicationContext,
-                    PeliculasDatabase::class.java,"db_peliculas")
+                instance = Room.databaseBuilder<SongsDatabase>(context.applicationContext,
+                    SongsDatabase::class.java,"db_songs")
                     .allowMainThreadQueries() //para llamar a base de datos en el hilo principal
                     .addCallback(room)
                     .build()

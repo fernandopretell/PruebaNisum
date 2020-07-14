@@ -1,5 +1,6 @@
 package com.fernandopretell.pruebanisum.source.remote
 
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -13,20 +14,21 @@ class HelperWs {
 
     companion object {
 
-        fun  getConfigurationServiceData(): Retrofit {
+        fun getConfigurationServiceData(): Retrofit {
 
             val interceptor = HttpLoggingInterceptor()
             interceptor.level = HttpLoggingInterceptor.Level.BODY
             val client = OkHttpClient.Builder().addInterceptor(interceptor)
-                    .readTimeout(180, TimeUnit.SECONDS)
-                    .connectTimeout(180, TimeUnit.SECONDS)
-                    .build()
+                .readTimeout(180, TimeUnit.SECONDS)
+                .connectTimeout(180, TimeUnit.SECONDS)
+                .build()
 
             return Retrofit.Builder()
-                    .baseUrl("https://itunes.apple.com/search?")
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .client(client)
-                    .build()
+                .baseUrl("https://itunes.apple.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(CoroutineCallAdapterFactory())
+                .client(client)
+                .build()
 
 
         }

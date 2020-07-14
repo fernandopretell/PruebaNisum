@@ -9,8 +9,6 @@ import com.fernandopretell.pruebanisum.R
 import com.fernandopretell.pruebanisum.util.ConnectivityReceiver
 import com.fernandopretell.pruebanisum.util.LoadingView
 import com.fernandopretell.pruebanisum.util.removeFromParent
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.FirebaseFirestore
 import dagger.android.support.DaggerAppCompatActivity
 
 
@@ -20,21 +18,9 @@ abstract class BaseActivity : DaggerAppCompatActivity(),
     private var isReceiverRegistered = false
     private val loadingView by lazy { LoadingView(this) }
 
-    //lateinit var firestore: FirebaseFirestore
-    //lateinit var firebaseAuth: FirebaseAuth
-    //protected lateinit var uid : String
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         overridePendingTransitionEnter()
-        //firestore = FirebaseFirestore.getInstance()
-        //firebaseAuth = FirebaseAuth.getInstance()
-
-        //if(firebaseAuth.currentUser != null) uid = firebaseAuth.currentUser?.uid!!
-
-        //registerReceiver(ConnectivityReceiver(), IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))
-
     }
 
     fun showProgressDialog(message: String) {
@@ -59,21 +45,16 @@ abstract class BaseActivity : DaggerAppCompatActivity(),
 
     fun showProgressDialog(@StringRes idMessage: Int) = showProgressDialog(getString(idMessage))
 
-    /*override fun onNetworkConnectionChanged(isConnected: Boolean) {
-        showNetworkMessage(isConnected)
-    }
-
     override fun onResume() {
         super.onResume()
         ConnectivityReceiver.connectivityReceiverListener = this
         isReceiverRegistered = true
-    }*/
+    }
 
     override fun finish() {
         super.finish()
         overridePendingTransitionExit()
     }
-
 
     /**
      * Overrides the pending Activity transition by performing the "Enter" animation.
@@ -112,7 +93,5 @@ abstract class BaseActivity : DaggerAppCompatActivity(),
         val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeNetwork = cm.activeNetworkInfo
         return activeNetwork != null && activeNetwork.isConnected
-
     }
-
 }

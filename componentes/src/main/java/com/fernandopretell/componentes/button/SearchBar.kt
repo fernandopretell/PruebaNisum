@@ -262,6 +262,10 @@ class SearchBar @JvmOverloads constructor(
 
     private fun isTextEmpty() = tvSearch?.text?.isEmpty() ?: true
 
+    fun clearText(){
+        ivIcon.performClick()
+    }
+
     fun updateItems(items: List<String>) {
         this.items = items.toTypedArray()
         createDefaultAdapter()

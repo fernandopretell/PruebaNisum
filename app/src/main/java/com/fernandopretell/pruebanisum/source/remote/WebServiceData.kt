@@ -7,13 +7,13 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 /**
  * Created by fernandopretell.
  */
 interface WebServiceData {
 
-    @Headers("Content-Type: application/json")
-    @GET("term={text_search}&mediaType=music&limit=20")
-    fun getSongs(@Path("text_search") text_search: String?): Deferred<Response<List<ResponseItunesSong>>>
+    @GET("search?mediaType=music&limit=20")
+    fun getSongs(@Query("term") text_search: String?): Deferred<Response<ResponseItunesSong>>
 }
